@@ -1,0 +1,45 @@
+import re
+
+def simple_chatbot():
+    print("Bot: Hi there! I'm a simple chatbot. Type 'exit' to quit.")
+
+    while True:
+        user_input = input("You: ").lower()
+
+        # Exit condition
+        if user_input == 'exit':
+            print("Bot: Bye! Have a great day.")
+            break
+
+        # Greetings
+        elif re.search(r'\b(hi|hello|hey|good morning|good evening)\b', user_input):
+            print("Bot: Hello! How can I assist you today?")
+
+        # Asking about name
+        elif re.search(r'\b(your name|who are you)\b', user_input):
+            print("Bot: I'm ChatBot 101, your virtual assistant!")
+
+        # Asking for help
+        elif re.search(r'\b(help|support|assist)\b', user_input):
+            print("Bot: I can answer simple questions. Try asking about the weather, time, or say hello.")
+
+        # Saying thanks
+        elif re.search(r'\b(thank you|thanks)\b', user_input):
+            print("Bot: You're welcome!")
+
+        # Asking about time
+        elif re.search(r'\b(time|current time)\b', user_input):
+            from datetime import datetime
+            now = datetime.now().strftime("%H:%M")
+            print(f"Bot: The current time is {now}.")
+
+        # Asking about weather (basic response)
+        elif re.search(r'\b(weather|temperature|climate)\b', user_input):
+            print("Bot: I don't have live weather data yet, but it looks like a nice day to chat!")
+
+        # Fallback for unrecognized input
+        else:
+            print("Bot: I'm not sure how to respond to that. Try saying 'help'.")
+
+# Run the chatbot
+simple_chatbot()
